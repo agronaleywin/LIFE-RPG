@@ -1,0 +1,35 @@
+/* Dark Fantasy Theme */
+body {
+  background: #0a0a0a url("assets/castle-bg.jpg");
+  color: #c0a080;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.blood-bar {
+  background: #2a0a0a;
+  height: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.blood-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b0000, #ff0000);
+  width: 10%;
+  transition: width 0.5s ease;
+}
+
+.quest-log {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border: 2px solid #5a0000;
+}
+
+#boss-modal {
+  background: #1a0a0a;
+  border: 3px solid #8b0000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
