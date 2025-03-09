@@ -2,62 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DRACULA: Ascension to Transcendence</title>
+  <title>Dracula's Transcendence RPG</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Blood Mist Particles -->
-  <div id="particles"></div>
-
-  <!-- Main Container -->
   <div class="container">
-    <!-- Animated Title -->
-    <h1 class="title-glowing">ASCENSION OF DRACULA</h1>
-
-    <!-- Character Avatar -->
-    <div class="character">
-      <img src="images/dracula-avatar.png" id="character-img" class="avatar-glowing">
-      <div class="stats-overlay">
-        <span id="level">Level 1</span>
-        <div class="blood-moon-bar">
-          <div class="moon-progress"></div>
-        </div>
+    <!-- Stats Panel -->
+    <div class="stats-panel">
+      <h2 class="class-title" id="class-title">DIVINE HEALER</h2>
+      <div class="blood-bar">
+        <div class="blood-fill" id="blood-fill"></div>
       </div>
+      <div class="level">LEVEL <span id="level">1</span></div>
     </div>
 
-    <!-- Dark Grimoire (Skill Tree) -->
-    <div class="grimoire">
-      <div class="spell" onclick="unlockSkill('blood-magic')">
-        <span class="spell-name">Blood Magic</span>
-        <div class="spell-progress"></div>
-      </div>
-      <!-- Add more spells/skills -->
-    </div>
-
-    <!-- Quest Log (Carved Stone Tablet) -->
+    <!-- Quest Log -->
     <div class="quest-log">
-      <div class="quest" id="quest1" onclick="startQuest('curse-lifting')">
-        <h3>The First Curse</h3>
-        <p>Master basic anatomy to lift the ancient curse.</p>
-        <div class="quest-progress"></div>
-      </div>
+      <h3>ACTIVE QUESTS</h3>
+      <ul id="quest-list">
+        <li data-xp="500" data-class="healer">
+          <input type="checkbox" id="quest1">
+          <label for="quest1">🔮 Master Anatomy (0/3 textbooks)</label>
+        </li>
+      </ul>
     </div>
 
-    <!-- Boss Battle Modal (Hidden by default) -->
+    <!-- Boss Battle Modal (Hidden) -->
     <div id="boss-modal" class="hidden">
-      <h2>THE CRIMSON LICH</h2>
+      <h2>⚔️ FINAL BOSS: THE CRIMSON LICH ⚔️</h2>
       <div class="boss-health">
-        <div class="health-bar"></div>
+        <div class="health-bar" id="boss-health"></div>
       </div>
-      <button onclick="attackBoss()">ATTACK</button>
+      <button onclick="attackBoss()">BLOOD STRIKE</button>
     </div>
   </div>
-
-  <!-- Audio -->
-  <audio id="bg-music" loop>
-    <source src="sounds/gothic-orchestra.mp3" type="audio/mpeg">
-  </audio>
 
   <script src="script.js"></script>
 </body>
