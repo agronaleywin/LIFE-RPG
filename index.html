@@ -2,52 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dracula's Life RPG</title>
+  <title>DRACULA: Ascension to Transcendence</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Blood Mist Particles -->
+  <div id="particles"></div>
+
+  <!-- Main Container -->
   <div class="container">
-    <h1>Dracula's Life RPG</h1>
-    <p class="subtitle">Journey to Transcendence</p>
+    <!-- Animated Title -->
+    <h1 class="title-glowing">ASCENSION OF DRACULA</h1>
 
-    <!-- Stats Section -->
-    <div class="stats">
-      <h2>Stats</h2>
-      <div class="stat">
-        <span>Strength</span>
-        <div class="progress-bar">
-          <div class="progress" id="strength-bar"></div>
+    <!-- Character Avatar -->
+    <div class="character">
+      <img src="images/dracula-avatar.png" id="character-img" class="avatar-glowing">
+      <div class="stats-overlay">
+        <span id="level">Level 1</span>
+        <div class="blood-moon-bar">
+          <div class="moon-progress"></div>
         </div>
-        <span id="strength-value">10</span>
       </div>
-      <!-- Repeat for other stats -->
     </div>
 
-    <!-- Quests Section -->
-    <div class="quests">
-      <h2>Quests</h2>
-      <ul id="quest-list">
-        <li>
-          <input type="checkbox" id="quest1">
-          <label for="quest1">Read a medical book</label>
-        </li>
-        <li>
-          <input type="checkbox" id="quest2">
-          <label for="quest2">Perform 10 pull-ups</label>
-        </li>
-      </ul>
+    <!-- Dark Grimoire (Skill Tree) -->
+    <div class="grimoire">
+      <div class="spell" onclick="unlockSkill('blood-magic')">
+        <span class="spell-name">Blood Magic</span>
+        <div class="spell-progress"></div>
+      </div>
+      <!-- Add more spells/skills -->
     </div>
 
-    <!-- Achievements Section -->
-    <div class="achievements">
-      <h2>Achievements</h2>
-      <ul id="achievement-list">
-        <li data-unlocked="false">Early Riser</li>
-        <li data-unlocked="false">Iron Will</li>
-      </ul>
+    <!-- Quest Log (Carved Stone Tablet) -->
+    <div class="quest-log">
+      <div class="quest" id="quest1" onclick="startQuest('curse-lifting')">
+        <h3>The First Curse</h3>
+        <p>Master basic anatomy to lift the ancient curse.</p>
+        <div class="quest-progress"></div>
+      </div>
+    </div>
+
+    <!-- Boss Battle Modal (Hidden by default) -->
+    <div id="boss-modal" class="hidden">
+      <h2>THE CRIMSON LICH</h2>
+      <div class="boss-health">
+        <div class="health-bar"></div>
+      </div>
+      <button onclick="attackBoss()">ATTACK</button>
     </div>
   </div>
+
+  <!-- Audio -->
+  <audio id="bg-music" loop>
+    <source src="sounds/gothic-orchestra.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="script.js"></script>
 </body>
