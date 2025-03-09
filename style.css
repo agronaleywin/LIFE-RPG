@@ -1,61 +1,75 @@
-/* Dark Fantasy Theme */
+/* DARK FANTASY THEME */
 body {
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-  font-family: 'Cinzel', serif;
-  margin: 0;
-  padding: 20px;
+  background: #0a0a0a url("images/castle-bg.jpg") no-repeat fixed;
+  color: #c0a080;
+  font-family: 'Cinzel Decorative', cursive;
+  overflow-x: hidden;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+/* Glowing Title */
+.title-glowing {
+  text-shadow: 0 0 20px #8b0000;
+  animation: glow 2s infinite alternate;
 }
 
-h1 {
-  font-size: 3rem;
-  color: #8b0000;
-  text-align: center;
+@keyframes glow {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
 }
 
-.subtitle {
-  font-size: 1.2rem;
-  color: #666;
-  text-align: center;
+/* Character Avatar */
+.character {
+  position: relative;
+  filter: drop-shadow(0 0 30px #8b0000);
 }
 
-.stats, .quests, .achievements {
-  margin-top: 30px;
+.avatar-glowing {
+  animation: float 3s ease-in-out infinite;
 }
 
-.stat {
-  margin-bottom: 15px;
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
 
-.progress-bar {
-  width: 100%;
+/* Blood Moon Progress Bar */
+.blood-moon-bar {
+  background: #2a0a0a;
+  border: 2px solid #8b0000;
   height: 20px;
-  background-color: #333;
   border-radius: 10px;
-  overflow: hidden;
 }
 
-.progress {
+.moon-progress {
+  background: linear-gradient(90deg, #8b0000, #ff0000);
   height: 100%;
-  background-color: #8b0000;
-  width: 10%; /* Initial value */
+  width: 10%;
+  transition: width 1s ease;
+  box-shadow: 0 0 20px #8b0000;
 }
 
-.quests ul, .achievements ul {
-  list-style: none;
-  padding: 0;
+/* Particle Effects */
+#particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at bottom, #1a1a1a 0%, #0a0a0a 100%);
 }
 
-.quests li, .achievements li {
-  margin: 10px 0;
+/* Grimoire Spells */
+.grimoire {
+  background: url("images/parchment.png");
+  padding: 20px;
+  border: 3px solid #5a0000;
 }
 
-.achievements li[data-unlocked="true"] {
-  color: #8b0000;
-  font-weight: bold;
+.spell {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.spell:hover {
+  transform: scale(1.05);
 }
