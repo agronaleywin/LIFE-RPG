@@ -1,45 +1,103 @@
-// Stats Data
-const stats = {
-  strength: 10,
-  intelligence: 10,
-  endurance: 10,
-  mobility: 10,
-};
+// EPIC RPG ENGINE
+class DraculaRPG {
+  constructor() {
+    this.level = 1;
+    this.stats = {
+      bloodMagic: 0,
+      strength: 10,
+      cursedKnowledge: 0
+    };
+    this.bossHealth = 100;
+    this.init();
+  }
 
-// Update Progress Bars
-function updateProgressBars() {
-  for (const stat in stats) {
-    const bar = document.getElementById(`${stat}-bar`);
-    const value = document.getElementById(`${stat}-value`);
-    if (bar && value) {
-      bar.style.width = `${stats[stat]}%`;
-      value.textContent = stats[stat];
+  init() {
+    // Start music
+    document.getElementById('bg-music').play();
+
+    // Initialize particles
+    this.createParticles();
+
+    // Load saved progress
+    this.loadProgress();
+  }
+
+  // Blood Mist Particles
+  createParticles() {
+    const particleCount = 100;
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'blood-particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      document.getElementById('particles').appendChild(particle);
     }
+  }
+
+  // Level Up System
+  levelUp() {
+    this.level++;
+    document.getElementById('level').textContent = `Level ${this.level}`;
+    this.animateLevelUp();
+    
+    if (this.level % 10 === 0) {
+      this.startBossBattle();
+    }
+  }
+
+  // Boss Battle!
+  startBossBattle() {
+    document.getElementById('boss-modal').classList.remove('hidden');
+    this.bossHealth = 100;
+    this.animateBossEntrance();
+  }
+
+  attackBoss() {
+    this.bossHealth -= 10;
+    document.querySelector('.boss-health .health-bar').style.width = `${this.bossHealth}%`;
+    
+    if (this.bossHealth <= 0) {
+      this.defeatBoss();
+    }
+  }
+
+  // Save Progress (LocalStorage)
+  saveProgress() {
+    localStorage.setItem('draculaRPG', JSON.stringify({
+      level: this.level,
+      stats: this.stats
+    }));
+  }
+
+  loadProgress() {
+    const saved = JSON.parse(localStorage.getItem('draculaRPG'));
+    if (saved) {
+      this.level = saved.level;
+      this.stats = saved.stats;
+      this.updateUI();
+    }
+  }
+
+  // Update All UI Elements
+  updateUI() {
+    document.querySelector('.moon-progress').style.width = `${this.level}%`;
+    document.getElementById('level').textContent = `Level ${this.level}`;
   }
 }
 
-// Quests
-const quests = document.querySelectorAll('#quest-list input');
-quests.forEach(quest => {
-  quest.addEventListener('change', () => {
-    if (quest.checked) {
-      stats.strength += 5; // Example: Increase strength on quest completion
-      updateProgressBars();
-    }
-  });
-});
+// Initialize the RPG
+const game = new DraculaRPG();
 
-// Achievements
-const achievements = document.querySelectorAll('#achievement-list li');
-achievements.forEach(achievement => {
-  if (achievement.getAttribute('data-unlocked') === 'false') {
-    achievement.addEventListener('click', () => {
-      achievement.setAttribute('data-unlocked', 'true');
-      stats.intelligence += 10; // Example: Increase intelligence on achievement unlock
-      updateProgressBars();
-    });
+// Unlock Skills
+function unlockSkill(skill) {
+  if (game.stats[skill] < 100) {
+    game.stats[skill] += 10;
+    game.levelUp();
+    game.saveProgress();
   }
-});
+}
 
-// Initial Load
-updateProgressBars();
+// Start Quest
+function startQuest(quest) {
+  // Add quest logic here
+}
