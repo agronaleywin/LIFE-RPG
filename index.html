@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life RPG</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dracula's Life RPG</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>⚔ Life RPG - The Path to Transcendence ⚔</h1>
-    </header>
-    
-    <main>
-        <div class="stats">
-            <p>Level: <span id="level">1</span></p>
-            <p>XP: <span id="xp">0</span> / <span id="xpNeeded">1000</span></p>
-            <p>Gold: <span id="gold">0</span></p>
-        </div>
-        
-        <button onclick="gainXP(200)">Complete Quest (+200 XP)</button>
-    </main>
+  <div class="container">
+    <h1>Dracula's Life RPG</h1>
+    <p class="subtitle">Journey to Transcendence</p>
 
-    <script src="script.js"></script>
+    <!-- Stats Section -->
+    <div class="stats">
+      <h2>Stats</h2>
+      <div class="stat">
+        <span>Strength</span>
+        <div class="progress-bar">
+          <div class="progress" id="strength-bar"></div>
+        </div>
+        <span id="strength-value">10</span>
+      </div>
+      <!-- Repeat for other stats -->
+    </div>
+
+    <!-- Quests Section -->
+    <div class="quests">
+      <h2>Quests</h2>
+      <ul id="quest-list">
+        <li>
+          <input type="checkbox" id="quest1">
+          <label for="quest1">Read a medical book</label>
+        </li>
+        <li>
+          <input type="checkbox" id="quest2">
+          <label for="quest2">Perform 10 pull-ups</label>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Achievements Section -->
+    <div class="achievements">
+      <h2>Achievements</h2>
+      <ul id="achievement-list">
+        <li data-unlocked="false">Early Riser</li>
+        <li data-unlocked="false">Iron Will</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
